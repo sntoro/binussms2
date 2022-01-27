@@ -1,0 +1,84 @@
+-- --------------------------------------------------------
+-- Host:                         127.0.0.1
+-- Server version:               10.4.22-MariaDB - mariadb.org binary distribution
+-- Server OS:                    Win64
+-- HeidiSQL Version:             11.2.0.6213
+-- --------------------------------------------------------
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET NAMES utf8 */;
+/*!50503 SET NAMES utf8mb4 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+-- Dumping data for table binussms2.tm_machine: ~0 rows (approximately)
+/*!40000 ALTER TABLE `tm_machine` DISABLE KEYS */;
+INSERT INTO `tm_machine` (`ID`, `MACHINE_CODE`, `MACHINE_NAME`, `PASSWORD`, `LOCATION`, `FLG_DEL`, `CREATED_BY`, `CREATED_DATE`, `CREATED_TIME`) VALUES
+	(1, 'M001', 'Machine Name 1', '1234', 'Area 1', 0, 'admin', '20220127', '081024'),
+	(2, 'M002', 'Machine Name 2', '1234', 'Area 2', 0, 'admin', '20220127', '081138'),
+	(3, 'M003', 'Machine Name 3', '1213', 'Area 3', 0, 'admin', '20220127', '081321');
+/*!40000 ALTER TABLE `tm_machine` ENABLE KEYS */;
+
+-- Dumping data for table binussms2.tm_module: ~5 rows (approximately)
+/*!40000 ALTER TABLE `tm_module` DISABLE KEYS */;
+INSERT INTO `tm_module` (`ID`, `CHR_MODULE`, `CHR_URL`) VALUES
+	(1, 'Master User', 'user_c'),
+	(2, 'Master Part', 'part_c'),
+	(3, 'Master Machine', 'machine_c'),
+	(4, 'Production Result', 'production_result_c'),
+	(5, 'Dashboard Admin', 'dashboard_c');
+/*!40000 ALTER TABLE `tm_module` ENABLE KEYS */;
+
+-- Dumping data for table binussms2.tm_part: ~1 rows (approximately)
+/*!40000 ALTER TABLE `tm_part` DISABLE KEYS */;
+INSERT INTO `tm_part` (`ID`, `PART_NO`, `PART_NAME`, `CREATED_BY`, `CREATED_DATE`, `CREATED_TIME`, `FLG_DEL`) VALUES
+	(2, '0000001', 'Part Name 1', 'admin', '20220127', '080847', 0),
+	(3, '0000002', 'Part Name 2', 'admin', '20220127', '081409', 0);
+/*!40000 ALTER TABLE `tm_part` ENABLE KEYS */;
+
+-- Dumping data for table binussms2.tm_role: ~3 rows (approximately)
+/*!40000 ALTER TABLE `tm_role` DISABLE KEYS */;
+INSERT INTO `tm_role` (`ID`, `ROLE`) VALUES
+	(1, 'Administrator'),
+	(2, 'Manager'),
+	(3, 'Supervisor');
+/*!40000 ALTER TABLE `tm_role` ENABLE KEYS */;
+
+-- Dumping data for table binussms2.tm_user: ~3 rows (approximately)
+/*!40000 ALTER TABLE `tm_user` DISABLE KEYS */;
+INSERT INTO `tm_user` (`ID`, `ROLE`, `USER_CODE`, `USERNAME`, `PASSWORD`, `REGIS_DATE`, `EXP_DATE`, `FLG_DEL`, `FLG_LOG`, `CREATED_BY`, `CREATED_DATE`, `CREATED_TIME`) VALUES
+	(1, 1, '0001', 'admin', 'admin', '2022-01-27', '2023-12-27', 0, 0, 'admin', '2022-01-27 ', '11:34:05'),
+	(2, 2, '0002', 'manager', 'manager', '2022-01-27', '2023-12-27', 0, 0, 'admin', '2022-01-27 ', '11:34:05'),
+	(3, 3, '0003', 'supervisor', 'supervisor', '2022-01-27', '2023-12-27', 0, 0, 'admin', '2022-01-27 ', '11:34:05');
+/*!40000 ALTER TABLE `tm_user` ENABLE KEYS */;
+
+-- Dumping data for table binussms2.tr_production_result: ~0 rows (approximately)
+/*!40000 ALTER TABLE `tr_production_result` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tr_production_result` ENABLE KEYS */;
+
+-- Dumping data for table binussms2.tt_log: ~1 rows (approximately)
+/*!40000 ALTER TABLE `tt_log` DISABLE KEYS */;
+INSERT INTO `tt_log` (`ID`, `ACTIVITY`, `CPU`, `OBJECT`, `CREATED_BY`, `CREATED_DATE`, `CREATED_TIME`) VALUES
+	(1, 'save_part', 'NTB-153.aisin.com', '0000001|Part Name 1|admin|20220127|080847', 'admin', '20220127', '080847'),
+	(2, 'save_machine', 'NTB-153.aisin.com', 'M001|Machine Name 1|1234|Area 1|admin|20220127|081', 'admin', '20220127', '081024'),
+	(3, 'save_machine', 'NTB-153.aisin.com', 'M002|Machine Name 2|1234|Area 2|admin|20220127|081', 'admin', '20220127', '081138'),
+	(4, 'save_machine', 'NTB-153.aisin.com', 'M003|Machine Name 3|1213|Area 3|admin|20220127|081', 'admin', '20220127', '081321'),
+	(5, 'save_part', 'NTB-153.aisin.com', '0000002|Part Name 3|admin|20220127|081409', 'admin', '20220127', '081409'),
+	(6, 'update_part', 'NTB-153.aisin.com', '0000002|Part Name 2', 'admin', '20220127', '081415');
+/*!40000 ALTER TABLE `tt_log` ENABLE KEYS */;
+
+-- Dumping data for table binussms2.tt_role_module: ~5 rows (approximately)
+/*!40000 ALTER TABLE `tt_role_module` DISABLE KEYS */;
+INSERT INTO `tt_role_module` (`ID_MODULE`, `ID_ROLE`, `FLG_MENU`, `FLG_DEL`) VALUES
+	(1, 1, 2, 0),
+	(2, 1, 2, 0),
+	(3, 1, 2, 0),
+	(4, 1, 3, 0),
+	(5, 1, 1, 0);
+/*!40000 ALTER TABLE `tt_role_module` ENABLE KEYS */;
+
+/*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
+/*!40014 SET FOREIGN_KEY_CHECKS=IFNULL(@OLD_FOREIGN_KEY_CHECKS, 1) */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40111 SET SQL_NOTES=IFNULL(@OLD_SQL_NOTES, 1) */;
