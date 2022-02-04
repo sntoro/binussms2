@@ -47,7 +47,7 @@ INSERT INTO `tm_role` (`ID`, `ROLE`) VALUES
 
 -- Dumping data for table binussms2.tm_user: ~3 rows (approximately)
 /*!40000 ALTER TABLE `tm_user` DISABLE KEYS */;
-INSERT INTO `tm_user` (`ID`, `ROLE`, `USER_CODE`, `USERNAME`, `PASSWORD`, `REGIS_DATE`, `EXP_DATE`, `FLG_DEL`, `FLG_LOG`, `CREATED_BY`, `CREATED_DATE`, `CREATED_TIME`) VALUES
+INSERT INTO `tm_user` (`ID`, `ID_ROLE`, `USER_CODE`, `USERNAME`, `PASSWORD`, `REGIS_DATE`, `EXP_DATE`, `FLG_DEL`, `FLG_LOG`, `CREATED_BY`, `CREATED_DATE`, `CREATED_TIME`) VALUES
 	(1, 1, '0001', 'admin', 'admin', '2022-01-27', '2023-12-27', 0, 0, 'admin', '2022-01-27 ', '11:34:05'),
 	(2, 2, '0002', 'manager', 'manager', '2022-01-27', '2023-12-27', 0, 0, 'admin', '2022-01-27 ', '11:34:05'),
 	(3, 3, '0003', 'supervisor', 'supervisor', '2022-01-27', '2023-12-27', 0, 0, 'admin', '2022-01-27 ', '11:34:05');

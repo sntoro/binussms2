@@ -11,6 +11,7 @@ class login_c extends CI_Controller
     {
         parent::__construct();
         $this->load->model('user_m');
+        // $this->load->model('role_m');
     }
 
     public function index($msg = null)
@@ -59,31 +60,45 @@ class login_c extends CI_Controller
         $this->load->view($this->layout_login, $data);
     }
 
+    //function untuk Login
     public function login()
     {
+        //inputan dari user (dari view)
         $user_code = $this->input->post('user_code');
         $password = $this->input->post('password');
 
+        //check existing data user
         if ($this->user_m->check_if_exist($user_code)) {
+            //check deleted data user
             if ($this->user_m->check_if_deleted($user_code)) {
+                //check user is login in other machine or not
                 if ($this->user_m->check_if_on($user_code)) {
+                    //check password true or not
                     if ($this->user_m->check_password($user_code, $password)) {
+                        //check expire password 
                         if ($this->user_m->check_if_exp_password($user_code)) {
+                            //create session for user login
                             $this->user_m->set_session($user_code);
+                            //login success - show dashboard for spesific user role
                             redirect('dashboard_c');
                         } else {
+                            //show error message - user password was expired
                             $this->index('5');
                         }
                     } else {
+                        //show error message - password not same/valid
                         $this->index('4');
                     }
                 } else {
+                    //show error message - user login in other machine
                     $this->index('3');
                 }
             } else {
+                //show error message - user has been deleted
                 $this->index('2');
             }
         } else {
+            //show error message - data user not exist
             $this->index('1');
         }
     }
@@ -107,7 +122,7 @@ class login_c extends CI_Controller
         $this->session->unset_userdata('IP');
         $this->session->unset_userdata('REGIS_DATE');
         $this->session->unset_userdata('EXP_DATE');
-        $this->session->unset_userdata('ROLE');
+        $this->session->unset_userdata('ID_ROLE');
 
         // unset all user data
         $this->session->sess_destroy();

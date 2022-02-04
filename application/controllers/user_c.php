@@ -32,7 +32,7 @@ class user_c extends CI_Controller {
 		$data['msg'] = $msg;
 
 		$session = $this->session->all_userdata();
-		$role = $session['ROLE'];
+		$role = $session['ID_ROLE'];
 		
 		$data['menu_dashboard'] = $this->role_module_m->get_dashboard_module_by_role($role);
         $data['menu_master'] = $this->role_module_m->get_master_module_by_role($role);
@@ -67,7 +67,7 @@ class user_c extends CI_Controller {
 		if ($this->form_validation->run() == FALSE){
 
 			$session = $this->session->all_userdata();
-			$role = $session['ROLE'];
+			$role = $session['ID_ROLE'];
 
 			$data['menu_dashboard'] = $this->role_module_m->get_dashboard_module_by_role($role);
 			$data['menu_master'] = $this->role_module_m->get_master_module_by_role($role);
@@ -83,7 +83,7 @@ class user_c extends CI_Controller {
 				'USER_CODE' => $user_code,
 				'USERNAME' => $username,
 				'PASSWORD' => $password,
-				'ROLE' => $role,
+				'ID_ROLE' => $role,
 				'REGIS_DATE' => $datenow,
 				'EXP_DATE' => $expdate,
 				'CREATED_BY' => $user,
@@ -153,7 +153,7 @@ class user_c extends CI_Controller {
 		$data['data_user'] = $this->user_m->get_data_user_by_id($user_session['USER_CODE']);
 		$data['msg'] = $msg;
 
-		$role = $user_session['ROLE'];
+		$role = $user_session['ID_ROLE'];
 		
 		$data['menu_dashboard'] = $this->role_module_m->get_dashboard_module_by_role($role);
         $data['menu_master'] = $this->role_module_m->get_master_module_by_role($role);
@@ -183,7 +183,7 @@ class user_c extends CI_Controller {
 			'USER_CODE' => $user_code,
 			'USERNAME' => $username,
 			'PASSWORD' => $password,
-			'ROLE' => $role
+			'ID_ROLE' => $role
 		);
 		$this->user_m->update($data_insert, $id);
 

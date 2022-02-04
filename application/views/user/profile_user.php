@@ -87,7 +87,7 @@
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="role">Role <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="text" id="role" readonly required="required" class="form-control col-md-7 col-xs-12" value='<?php echo $data_user->ROLE ?>'>
+                          <input type="text" id="role" readonly required="required" class="form-control col-md-7 col-xs-12" value='<?php echo $data_user->ID_ROLE ?>'>
                         </div>
 											</div>
 

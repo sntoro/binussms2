@@ -32,7 +32,7 @@ class machine_c extends CI_Controller {
 		$data['msg'] = $msg;
 
 		$session = $this->session->all_userdata();
-		$role = $session['ROLE'];
+		$role = $session['ID_ROLE'];
 
 		$data['menu_dashboard'] = $this->role_module_m->get_dashboard_module_by_role($role);
         $data['menu_master'] = $this->role_module_m->get_master_module_by_role($role);
@@ -54,7 +54,7 @@ class machine_c extends CI_Controller {
 
 		$session = $this->session->all_userdata();
 		$user = $session['USERNAME'];
-		$role = $session['ROLE'];
+		$role = $session['ID_ROLE'];
 		$datenow = date('Ymd');
 		$timenow = date('His');
 
@@ -122,7 +122,7 @@ class machine_c extends CI_Controller {
 
 		$session = $this->session->all_userdata();
 		$user = $session['USERNAME'];
-		$role = $session['ROLE'];
+		$role = $session['ID_ROLE'];
 		$datenow = date('Ymd');
 		$timenow = date('His');
 
@@ -168,7 +168,7 @@ class machine_c extends CI_Controller {
 		
 		$session = $this->session->all_userdata();
 		$user = $session['USERNAME'];
-		$role = $session['ROLE'];
+		$role = $session['ID_ROLE'];
 		$datenow = date('Ymd');
 		$timenow = date('His');
 

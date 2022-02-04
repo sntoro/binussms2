@@ -128,9 +128,9 @@
 												</label>
 												<div class="col-md-6 col-sm-6 col-xs-12">
 												<select name='role' class="form-control">
-													<option <?php if($isi->ROLE == 1) echo 'selected'; ?> value='1'>Administrator</option>
-													<option <?php if($isi->ROLE == 2) echo 'selected'; ?> value='2'>Supervisor</option>
-													<option <?php if($isi->ROLE == 3) echo 'selected'; ?> value='2'>Leader</option>
+													<option <?php if($isi->ID_ROLE == 1) echo 'selected'; ?> value='1'>Administrator</option>
+													<option <?php if($isi->ID_ROLE == 2) echo 'selected'; ?> value='2'>Manager</option>
+													<option <?php if($isi->ID_ROLE == 3) echo 'selected'; ?> value='3'>Supervisor</option>
 												</select>
 												</div>
 											</div>

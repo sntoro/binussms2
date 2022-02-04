@@ -40,7 +40,7 @@ class user_m extends CI_Model
 	}
 
 	public function get_data() {
-        return $this->db->query("SELECT *, CASE ROLE WHEN 1 THEN 'Administrator' WHEN 2 THEN 'Supervisor' ELSE 'Leader' END AS STRING_ROLE FROM $this->table WHERE FLG_DEL = 0")->result();
+        return $this->db->query("SELECT *, CASE ID_ROLE WHEN 1 THEN 'Administrator' WHEN 2 THEN 'Manager' ELSE 'Supervisor' END AS STRING_ROLE FROM $this->table WHERE FLG_DEL = 0")->result();
 	}
 	
 	public function check_redudance($user_code){
@@ -53,7 +53,7 @@ class user_m extends CI_Model
 		}
 	}
 
-	//LOGIN
+	//check existing data user
 	public function check_if_exist($user_code) {
 
 		$this->db->where('USER_CODE', $user_code);
@@ -66,6 +66,7 @@ class user_m extends CI_Model
         }
 	}
 	
+    //check deleted data user
 	public function check_if_deleted($user_code) {
         $this->db->where('USER_CODE', $user_code);
 		$query = $this->db->get($this->table)->row();
@@ -77,6 +78,7 @@ class user_m extends CI_Model
         }
 	}
 	
+    //check user is login in other machine or not
 	public function check_if_on($user_code) {
         $this->db->where('USER_CODE', $user_code);
 		$query = $this->db->get($this->table)->row();
@@ -103,6 +105,7 @@ class user_m extends CI_Model
         }
     }
 
+    //check password true or not
 	public function check_password($user_code, $pass) {
 		$this->db->where('USER_CODE', $user_code);
 		$query = $this->db->get($this->table)->row();
@@ -114,6 +117,7 @@ class user_m extends CI_Model
         }
 	}
 
+    //check expire password 
 	public function check_if_exp_password($user_code) {
         $this->db->where('USER_CODE', $user_code);
 		$query = $this->db->get($this->table)->row();
@@ -127,6 +131,7 @@ class user_m extends CI_Model
         }
 	}
 	
+    //create session for user login
 	public function set_session($user_code) {
         $this->db->where('USER_CODE', $user_code);
 		$query = $this->db->get($this->table)->row();
@@ -137,7 +142,7 @@ class user_m extends CI_Model
         $user_session = array(
             'USER_CODE' => $user_code,
             'USERNAME' => trim($query->USERNAME),
-            'ROLE' => $query->ROLE,
+            'ID_ROLE' => $query->ID_ROLE,
             'IP' => $query->IP,
             'REGIS_DATE' => $query->REGIS_DATE,
             'EXP_DATE' => $query->EXP_DATE,

@@ -5,7 +5,7 @@ class dashboard_c extends CI_Controller {
 
 	public $layout = '/template/contains';
 
-	public function index($msg = NULL)
+	public function index()
 	{
 
 		$user_session = $this->session->all_userdata();
@@ -19,11 +19,9 @@ class dashboard_c extends CI_Controller {
 		$this->load->model('part_m');
 		$this->load->model('machine_m');
 
-		$data['msg'] = $msg;
 		$data['title'] = 'Dashboard';
 
-		$session = $this->session->all_userdata();
-		$role = $session['ROLE'];
+		$role = $user_session['ID_ROLE'];
 
 		if($role == 1){
 			$data['content'] = 'dashboard/admin_dashboard';
